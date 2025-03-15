@@ -1,0 +1,334 @@
+.container-store {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin: 0px;
+}
+
+.container-store .content-store {
+  width: 100%;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  color: var(--quaternary);
+  z-index: 1;
+  padding: 150px 0px 50px 0px;
+  position: relative;
+}
+
+.container-store .content-store::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url(../../../../assets/images/xadrez.png);
+  background-position: center;
+  background-size: contain;
+  z-index: -1;
+}
+
+.container-store .content-store .text {
+  width: 95%;
+  max-width: 750px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0px 50px 0px;
+}
+
+.container-store .content-store .text h1 {
+  font-size: 40px;
+  font-weight: 500;
+  text-align: center;
+  margin: 0px 0px 8px 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.container-store .content-store .text h1 span {
+  width: auto;
+  height: auto;
+  font-size: 20px;
+  font-weight: 500;
+  padding: 10px 14px;
+  border-radius: 16px;
+  margin: 0px 0px 0px 14px;
+  background: var(--eight);
+} 
+
+.container-store .content-store .text h1 span.green {
+  background: #07ff5e;
+  color: var(--tertiary);
+} .container-store .content-store .text h1 span.orange {
+  background: var(--orange);
+  color: var(--eleven);
+} .container-store .content-store .text h1 span.red {
+  background: var(--red);
+  color: var(--eleven);
+}
+
+.container-store .content-store .text h1 span p {
+  font-size: 14px;
+  font-weight: 500;
+  color: inherit;
+}
+
+.container-store .content-store .text p {
+  font-size: 16px;
+  font-weight: 300;
+  text-align: center;
+  margin: 0px 0px 6px 0px;
+}
+
+.container-store .content-store .text button {
+  margin: 15px 0px 0px 0px;
+}
+
+/* Orders */
+.container-store .content-orders {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0px;
+}
+
+.container-store .content-orders .orders {
+  width: 95%;
+  max-width: var(--max-width);
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Config */
+.container-store .content-orders .orders .config {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0px 0px 30px 0px;
+}
+
+.container-store .content-orders .orders .config h1 {
+  font-size: 30px;
+  font-weight: 600;
+  margin: 0px;
+}
+
+.container-store .content-orders .orders .config .status {
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.container-store .content-orders .orders .config .status * {
+  transition: all .2s ease-in-out;
+}
+
+.container-store .content-orders .orders .config .status .statu {
+  width: max-content;
+  height: auto;
+  padding: 0px 15px;
+  border-radius: 8px;
+  margin: 0px;
+  user-select: none;
+  cursor: pointer;
+} .container-store .content-orders .orders .config .status .statu.selected {
+  background: var(--primary);
+  color: var(--quaternary);
+} .container-store .content-orders .orders .config .status .statu.selected p {
+  border-bottom: 2px solid var(--quaternary);
+}
+
+/* Hover Default */
+.container-store .content-orders .orders .config .status .statu:hover,
+.container-store .content-orders .orders .config .status .statu:focus {
+  background: var(--eight);
+} .container-store .content-orders .orders .config .status .statu:hover p,
+.container-store .content-orders .orders .config .status .statu:focus p {
+  border-bottom: 2px solid var(--four);
+}
+
+/* Hover Selected */
+.container-store .content-orders .orders .config .status .statu.selected:hover,
+.container-store .content-orders .orders .config .status .statu.selected:focus {
+  background: var(--secondary);
+  color: var(--tertiary);
+} .container-store .content-orders .orders .config .status .statu.selected:hover p,
+.container-store .content-orders .orders .config .status .statu.selected:focus p {
+  border-bottom: 2px solid var(--tertiary);
+}
+
+.container-store .content-orders .orders .config .status .statu p {
+  padding: 10px 0px;
+  border-bottom: 2px solid transparent;
+}
+
+
+/* List Orders */
+.container-store .content-orders .orders .list-orders {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 0px 0px 20px 0px;
+}
+
+.container-store .content-orders .orders .list-orders .not-found {
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--tertiary);
+  margin: 15px 0px;
+}
+
+.container-store .content-orders .orders .list-orders .order {
+  width: max-content;
+  min-width: 350px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 14px;
+  padding: 5px;
+  background: var(--primary);
+  border: 1px solid var(--eight);
+  color: var(--ten);
+  cursor: pointer;
+  user-select: none;
+  transition: all .2s ease-in-out;
+} .container-store .content-orders .orders .list-orders .order:hover,
+.container-store .content-orders .orders .list-orders .order:focus {
+  box-shadow: 0px 0px 1px 5px #99a8f1ea;
+} .container-store .content-orders .orders .list-orders .order:hover .details,
+.container-store .content-orders .orders .list-orders .order:focus .details {
+  background: #99a8f1bb;
+}
+
+.container-store .content-orders .orders .list-orders .order * {
+  transition: all .2s ease-in-out;
+}
+
+/* Price */
+.container-store .content-orders .orders .list-orders .order .price {
+  width: 95%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 15px 0px 17.5px 0px;
+}
+
+.container-store .content-orders .orders .list-orders .order .price .status {
+  width: auto;
+  height: auto;
+  padding: 8px 12px;
+  border-radius: 16px;
+  background: var(--eight);
+} 
+
+.container-store .content-orders .orders .list-orders .order .price .status.green {
+  background: #07ff5e;
+  color: var(--tertiary);
+} .container-store .content-orders .orders .list-orders .order .price .status.orange {
+  background: var(--orange);
+  color: var(--eleven);
+} .container-store .content-orders .orders .list-orders .order .price .status.red {
+  background: var(--red);
+  color: var(--eleven);
+}
+
+.container-store .content-orders .orders .list-orders .order .price .status p {
+  font-size: 14px;
+  font-weight: 500;
+  color: inherit;
+}
+
+.container-store .content-orders .orders .list-orders .order .price h2 {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+
+/* Details */
+.container-store .content-orders .orders .list-orders .order .details {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--blue);
+  border-radius: 10px;
+  padding: 17.5px calc(2.5% + 8px);
+}
+
+.container-store .content-orders .orders .list-orders .order .details h1 {
+  font-size: 34px;
+  font-weight: 400;
+  color: var(--eleven);
+  margin: 0px 0px 15px 0px;
+}
+
+.container-store .content-orders .orders .list-orders .order .details p {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0px 0px 2px 0px;
+}
+
+.container-store .content-orders .orders .list-orders .order .details .store {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto 0px 0px 0px;
+}
+
+.container-store .content-orders .orders .list-orders .order .details .store a {
+  font-size: 15px;
+  font-weight: 500;
+  margin: 0px 0px 2px 0px;
+}
+
+
+/* Order Data */
+.container-store .content-order-data {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0px;
+}
+
+.container-store .content-order-data .order-data {
+  width: 95%;
+  max-width: var(--max-width);
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

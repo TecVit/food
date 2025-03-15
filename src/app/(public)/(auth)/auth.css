@@ -1,0 +1,326 @@
+.container-auth {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin: 0px;
+}
+
+.container-auth .content-auth {
+  width: 100%;
+  min-height: 650px;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  color: var(--quaternary);
+  z-index: 1;
+  padding: 150px 0px 75px 0px;
+  position: relative;
+}
+
+.container-auth .content-auth::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url(../../../assets/images/xadrez.png);
+  background-position: center;
+  background-size: contain;
+  z-index: -1;
+}
+
+
+.container-auth .content-auth p {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--eight);
+} .container-auth .content-auth p a {
+  color: var(--eleven);
+  cursor: pointer;
+  transition: all .15s ease-in-out;
+} .container-auth .content-auth p a:hover,
+.container-auth .content-auth p a:focus {
+  text-decoration: underline;
+}
+
+.container-auth .content-auth .form {
+  width: 95%;
+  max-width: 475px;
+  color: var(--four);
+  background: var(--ten);
+  border: 1px solid var(--eight);
+  border-radius: 6px;
+  margin: 25px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container-auth .content-auth .form .ou {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  margin: 30px 0px 15px 0px;
+}
+
+.container-auth .content-auth .form .ou div {
+  width: 100%;
+  height: 1px;
+  border-top: 2px solid var(--seven);
+}
+
+.container-auth .content-auth .form .ou p {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--seven);
+  background: var(--ten);
+  text-transform: uppercase;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0px 10px;
+}
+
+.container-auth .content-auth .form .content {
+  width: 87.5%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px 0px;
+}
+
+.container-auth .content-auth .form .content h1 {
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  margin: 5px 0px 20px 0px;
+}
+
+.container-auth .content-auth .form .content h2 {
+  width: 100%;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--eight);
+  margin: 0px 0px;
+}
+
+.container-auth .content-auth .form .content a {
+  width: max-content;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--primary);
+  margin: 6.5px auto 6.5px 0px;
+} .container-auth .content-auth .form .content a:hover,
+.container-auth .content-auth .form .content a:focus {
+  text-decoration: underline;
+}
+
+.container-auth .content-auth .form .content .inputs {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 0px 0px 20px 0px;
+}
+
+.container-auth .content-auth .form .content .inputs .input {
+  flex: 1;
+  width: auto;
+  min-width: 250px;
+  margin: 0px;
+}
+
+.container-auth .content-auth .form .content .row {
+  width: 100%;
+  height: auto;
+  border-top: 2px solid var(--four);
+  margin: 5px 0px;
+}
+
+.container-auth .content-auth .form .content .input {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  margin: 8px 0px;
+}
+
+.container-auth .content-auth .form .content .input .eye {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  color: var(--five);
+  width: 20px;
+  height: auto;
+  cursor: pointer;
+}
+
+.container-auth .content-auth .form .content .input label {
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0px 0px 8px 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.container-auth .content-auth .form .content .input label span {
+  font-size: 13px;
+  color: var(--red);
+  text-transform: uppercase;
+  margin: 0px 4px 0px 0px;
+} .container-auth .content-auth .form .content .input label span .icon {
+  width: 16px;
+  height: 16px;
+  padding: 0px;
+  margin: 0px 0px 0px 2px;
+}
+
+.container-auth .content-auth .form .content .input input {
+  width: 100%;
+  height: 40px;
+  border-radius: 4px;
+  border: 1px solid var(--eight);
+  background: var(--nine);
+  color: var(--four);
+  padding: 0px 12.5px;
+  transition: all .15s ease-in-out;
+} .container-auth .content-auth .form .content .input input:focus {
+  box-shadow: 0px 0px 1px 2px var(--eight);
+}
+
+.container-auth .content-auth .form .content .input select {
+  width: 100%;
+  height: 40px;
+  border-radius: 4px;
+  border: 1px solid var(--four);
+  background: var(--three);
+  color: var(--eleven);
+  padding: 0px 12.5px;
+  cursor: pointer;
+  transition: all .15s ease-in-out;
+} .container-auth .content-auth .form .content .input select:focus {
+  box-shadow: 0px 0px 0px 2px var(--four);
+}
+
+.container-auth .content-auth .form .content button {
+  width: 100%;
+  min-height: 50px;
+  border-radius: 6px;
+  margin: 15px 0px 0px 0px;
+} .container-auth .content-auth .form .content button:hover,
+.container-auth .content-auth .form .content button:focus {
+  background: var(--secondary);
+  color: var(--tertiary);
+  box-shadow: none;
+}
+
+.container-auth .content-auth .form .content .info-password {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0px 10px 0px;
+}
+
+.container-auth .content-auth .form .content .info-password p {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0px 0px 4px 0px;
+}
+
+.container-auth .content-auth .form .content .info-password li {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 5px 0px;
+  color: var(--Ftve);
+}
+
+.container-auth .content-auth .form .content .info-password li.green {
+  color: var(--greenLight);
+}
+
+.container-auth .content-auth .form .content .info-password li .icon {
+  width: 20px;
+  height: auto;
+  margin: 0px 6px 0px 0px;
+}
+
+.container-auth .content-auth .form .content .info-password li p {
+  margin: 0px;
+  font-size: 16px;
+}
+
+
+.container-auth .content-auth .form .content .check {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 5px 0px 12.5px 0px;
+}
+
+.container-auth .content-auth .form .content .check .btn {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  border: 1px solid var(--four);
+  background: var(--three);
+  margin: 0px 6px 0px 0px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  transition: all .15s ease-in-out;
+} .container-auth .content-auth .form .content .check .btn:hover,
+  .container-auth .content-auth .form .content .check .btn:focus {
+  box-shadow: 0px 0px 0px 2px var(--four);
+} .container-auth .content-auth .form .content .check .btn.selected {
+  background: var(--blue);
+  box-shadow: 0px 0px 1px 1px var(--blue);
+}
+
+.container-auth .content-auth .form .content .check .btn .icon {
+  width: 70%;
+  height: auto;
+  color: var(--eleven);
+}
+
+.container-auth .content-auth .form .content .check label {
+  font-size: 15px;
+} .container-auth .content-auth .form .content .check label a {
+  font-weight: 600;
+  color: var(--blue);
+  user-select: none;
+  cursor: pointer;
+  transition: all .15s ease-in-out;
+} .container-auth .content-auth .form .content .check label a:hover,
+  .container-auth .content-auth .form .content .check label a:focus {
+  text-decoration: underline;
+}
+
+.g-recaptcha {
+  width: 100%;
+  margin: 15px 0px;
+  /* transform: scale(1.1);
+  transform-origin: 0 0; */
+}

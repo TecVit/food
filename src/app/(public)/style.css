@@ -1,0 +1,414 @@
+.container-landing {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin: 0px;
+}
+
+.container-landing .content-landing {
+  width: 100%;
+  min-height: 650px;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  color: var(--quaternary);
+  z-index: 1;
+  padding: 150px 0px 50px 0px;
+  position: relative;
+}
+
+.container-landing .content-landing::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url(../../assets/images/xadrez.png);
+  background-position: center;
+  background-size: contain;
+  z-index: -1;
+}
+
+.container-landing .content-landing .text {
+  width: 95%;
+  max-width: 750px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0px 0px 50px 0px;
+}
+
+.container-landing .content-landing .text h1 {
+  font-size: 40px;
+  font-weight: 500;
+  text-align: center;
+  margin: 0px 0px 6px 0px;
+}
+
+.container-landing .content-landing .text p {
+  font-size: 16px;
+  font-weight: 300;
+  text-align: center;
+  margin: 0px 0px 6px 0px;
+}
+
+/* Search */
+.container-landing .content-landing .text .search {
+  width: 95%;
+  max-width: 700px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin: 20px 0px 0px 0px;
+}
+
+.container-landing .content-landing .text .search .input {
+  width: 100%;
+  height: 50px;
+  border-radius: 10px;
+  background: var(--nine);
+  color: var(--tertiary);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.container-landing .content-landing .text .search .input input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  font-size: 15px;
+  font-weight: 400;
+  padding: 0px 15px 0px 45px;
+  color: var(--tertiary);
+} .container-landing .content-landing .text .search .input input::placeholder {
+  color: var(--three);
+}
+
+.container-landing .content-landing .text .search .input .icon {
+  width: 20px;
+  height: auto;
+  position: absolute;
+  left: 15px;
+  color: var(--tertiary);
+}
+
+/* Search - Result */
+.container-landing .content-landing .text .search .result {
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  max-height: 320px;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  margin: 0px 0px 0px 0px;
+  border-radius: 0px 0px 10px 10px;
+  background: var(--nine);
+  color: var(--tertiary);
+  z-index: 20;
+  padding: 0px 0px 10px 0px;
+}
+
+.container-landing .content-landing .text .search .result ul {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container-landing .content-landing .text .search .result ul li {
+  width: 100%;
+  height: auto;
+  list-style: none;
+  padding: 10px 18.5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  user-select: none;
+  cursor: pointer;
+} .container-landing .content-landing .text .search .result ul li:hover,
+  .container-landing .content-landing .text .search .result ul li:focus {
+  background: var(--quaternary);
+}
+
+.container-landing .content-landing .text .search .result ul li .image {
+  width: 55px;
+  height: 55px;
+  border-radius: 6px;
+  margin: 0px 12.5px 0px 0px;
+  overflow: hidden;
+}
+
+.container-landing .content-landing .text .search .result ul li .image img {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  object-fit: cover;
+}
+
+.container-landing .content-landing .text .search .result ul li .text {
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: var(--tertiary);
+  margin: 0px;
+  padding: 0px;
+}
+
+.container-landing .content-landing .text .search .result ul li .text h1 {
+  font-size: 17px;
+  font-weight: 500;
+  margin: 0px 0px 4px 0px;
+  color: var(--five);
+}
+
+.container-landing .content-landing .text .search .result ul li .text p {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0px;
+  color: var(--six);
+} .container-landing .content-landing .text .search .result ul li .text p strong {
+  font-weight: 500;
+  color: var(--green);
+} .container-landing .content-landing .text .search .result ul li .text p span {
+  font-weight: 500;
+  color: var(--primary);
+}
+
+
+/* Steps */
+.container-landing .steps {
+  width: 95%;
+  max-width: var(--max-width);
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 65px 0px;
+}
+
+.container-landing .steps ul {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.container-landing .steps ul li {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container-landing .steps ul li .icon {
+  width: 60px;
+  height: auto;
+  transition: all .3s linear;
+  z-index: 2;
+} .container-landing .steps ul li .icon:hover {
+  transform: translateY(-10px);
+}
+
+.container-landing .steps ul li .boll {
+  width: 140px;
+  height: 50px;
+  border-radius: 25px;
+  background: var(--secondary);
+  z-index: 1;
+  margin: -30px 0px 15px 0px;
+}
+
+.container-landing .steps ul li h1 {
+  font-size: 22px;
+  font-weight: 600;
+  text-align: center;
+  margin: 0px 0px 8px 0px;
+}
+
+.container-landing .steps ul li p {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22px;
+  text-align: center;
+  color: var(--six);
+  margin: 0px 0px 0px 0px;
+}
+
+
+.container-landing .steps ul .step-arrow {
+  flex: 0;
+  width: auto;
+  height: auto;
+  opacity: 0.1;
+  position: relative;
+  margin: 0px 30px;
+}
+
+.container-landing .steps ul .step-arrow img {
+  width: 100px;
+  height: max-content;
+}
+
+
+
+/* Products */
+.container-landing .content-products {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 65px 0px;
+}
+
+.container-landing .content-products .products {
+  width: 95%;
+  max-width: var(--max-width);
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container-landing .content-products .products h1 {
+  max-width: 600px;
+  font-size: 34px;
+  font-weight: 500;
+  text-align: center;
+  margin: 0px 0px 8px 0px;
+}
+
+.container-landing .content-products .products h2 {
+  max-width: 600px;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+  margin: 0px auto;
+}
+
+.container-landing .content-products .products p {
+  max-width: 550px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  text-align: center;
+  color: var(--six);
+  margin: 0px;
+}
+
+.container-landing .content-products .products ul {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  margin: 40px 0px 0px 0px;
+}
+
+.container-landing .content-products .products ul li {
+  flex: 1;
+  min-width: 300px;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.container-landing .content-products .products ul li .image {
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  padding: 0px;
+  margin: 0px;
+  overflow: hidden;
+  border: 1px solid var(--nine);
+  border-radius: 10px 10px 20px 20px;
+} .container-landing .content-products .products ul li .image:hover {
+  cursor: pointer;
+} .container-landing .content-products .products ul li .image:hover img {
+  scale: 1.085;
+}
+
+.container-landing .content-products .products ul li .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all .2s ease-in-out;
+}
+
+.container-landing .content-products .products ul li .image .icon {
+  width: 100%;
+  height: 100%;
+  padding: 60px;
+  color: var(--primary);
+  background: var(--ten);
+  transition: all .2s ease-in-out;
+} .container-landing .content-products .products ul li .image:hover .icon {
+  scale: 1.085;
+}
+
+.container-landing .content-products .products ul li .description {
+  display: flex;
+  flex-direction: row;
+  padding: 15px 5px;
+}
+
+/* Text */
+.container-landing .content-products .products ul li .description .text {
+  margin: 0px 20px 0px 0px;
+}
+
+.container-landing .content-products .products ul li .description .text h1 {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: unset;
+  text-align: start;
+  margin: 0px 0px 4px 0px;
+}
+
+.container-landing .content-products .products ul li .description .text p {
+  font-size: 15px;
+  font-weight: 500;
+  text-align: start;
+}
+
+/* Price */
+.container-landing .content-products .products ul li .description .price .stars {
+  width: max-content;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0px 0px 5px 0px;
+}
+
+.container-landing .content-products .products ul li .description .price .stars .star {
+  width: 16px;
+  height: auto;
+  color: var(--yellow);
+}
+
+.container-landing .content-products .products ul li .description .price p {
+  font-size: 16px;
+  font-weight: 600;
+  text-align: start;
+  color: var(--primary);
+}
