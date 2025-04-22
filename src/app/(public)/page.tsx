@@ -10,6 +10,7 @@ import { useState } from "react";
 import Footer from "../components/footer";
 import StarRating from "../components/stars";
 
+
 export default function Landing() {
 
   const productsList = [

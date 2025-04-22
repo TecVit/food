@@ -41,15 +41,15 @@ export async function POST(req: NextRequest) {
 
     // Role => client | store
     const { error: profileError } = await supabase
-    .from("profiles")
-    .insert([{ id: userId, full_name, role: type }]);
+    .from(type)
+    .insert([{ id: userId, full_name, email: email }]);
 
     if (profileError) {
       console.error("Erro ao inserir perfil:", profileError);
       return NextResponse.json({ error: "Erro ao criar perfil do usuário" }, { status: 500 });
     }
 
-    return NextResponse.json({ user: data.user }, { status: 201 });
+    return NextResponse.json({ user: data.user }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ error: "Erro interno do servidor" }, { status: 500 });
   }

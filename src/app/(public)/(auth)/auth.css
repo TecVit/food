@@ -229,7 +229,14 @@
   background: var(--secondary);
   color: var(--tertiary);
   box-shadow: none;
-}
+} .container-auth .content-auth .form .content button .loader {
+  background: var(--secondary);
+} 
+
+.container-auth .content-auth .form .content button:hover .loader,
+.container-auth .content-auth .form .content button:focus .loader {
+  background: var(--tertiary);
+} 
 
 .container-auth .content-auth .form .content .info-password {
   width: 100%;

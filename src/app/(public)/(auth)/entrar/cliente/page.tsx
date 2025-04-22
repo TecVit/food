@@ -11,28 +11,56 @@ import Footer from "@/app/components/footer";
 import { FcGoogle } from "react-icons/fc";
 import { supabase } from "@/lib/supabase/Config";
 import { parse } from "querystring";
+import jwt, { type JwtPayload } from "jsonwebtoken";
 
 const EntrarCliente = () => {
 
   useEffect(() => {
-    const hash = window.location.hash.substring(1);
-    const params = parse(hash);
-
-    const access_token = params["access_token"];
-    const refresh_token = params["refresh_token"];
-    const expires_in = params["expires_in"];
-
-    if (access_token && refresh_token) {
-      setCookie("access_token", access_token as string, 1 / 24);
-      setCookie("refresh_token", refresh_token as string, 30);
-
-      supabase.auth.setSession({
-        access_token: access_token as string,
-        refresh_token: refresh_token as string,
-      });
-
-      window.location.href = "/cliente/carrinho";
-    }
+    const fetchData = async () => {
+      const hash = window.location.hash.substring(1);
+      const params = parse(hash);
+  
+      const access_token = Array.isArray(params["access_token"])
+        ? params["access_token"][0]
+        : params["access_token"];
+  
+      const refresh_token = Array.isArray(params["refresh_token"])
+        ? params["refresh_token"][0]
+        : params["refresh_token"];
+  
+      if (access_token && refresh_token) {
+        const response = await fetch(`/api/auth/jwt`, {
+          method: "POST",
+          headers: {
+            'authorization': `Bearer ${access_token}`,
+          },
+        });
+  
+        const data = await response.json();
+  
+        if (response.status === 200 && data) {
+          const { full_name, email, id } = data.data;
+  
+          setCookie('name', full_name || "");
+          setCookie('email', email || "");
+          setCookie('id', id || "");
+  
+          setCookie("access_token", access_token, 1 / 24);
+          setCookie("refresh_token", refresh_token, 30);
+    
+          supabase.auth.setSession({
+            access_token,
+            refresh_token,
+          });
+    
+          window.location.href = "/cliente/carrinho";
+        } else {
+          notifyError("Aviso", "Acesso Negado ou Expirado!");
+        }
+      }
+    };
+  
+    fetchData();
   }, []);
 
   // Modais
@@ -113,6 +141,10 @@ const EntrarCliente = () => {
     try {
       const response = await fetch("/api/auth/google", {
         method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ type: 'client' })
       });
   
       const result = await response.json();
@@ -157,6 +189,7 @@ const EntrarCliente = () => {
               )}
             </div>
             <Link href="/redefinir-senha">Esqueci minha senha</Link>
+            
             <button onClick={handleEntrar} className='btn-tertiary'>
               {carregando ? (
                 <div className="loader"></div>
@@ -164,11 +197,13 @@ const EntrarCliente = () => {
                 <>Entrar</>
               )}
             </button>
+
             <div className="ou">
               <div></div>
               <p>OU</p>
               <div></div>
             </div>
+
             <button onClick={loginWithGoogle} className='btn-quaternary'>
               {carregando ? (
                 <div className="loader"></div>
