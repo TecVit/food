@@ -5,6 +5,9 @@ import './style.css';
 import { Facebook, Instagram } from "lucide-react";
 
 const Footer = () => {
+
+  const instagram = "pedidofacil.store";
+
   return (
     <header className="container-footer">
       <div className="content-footer">
@@ -14,8 +17,12 @@ const Footer = () => {
               <Image quality={100} src={Logo} alt="Logo" width={200} height={50} />
               <p>Forneçemos a melhor divulgação de produtos de araraquara</p>
               <div className="icons">
-                <Instagram className="icon" />
-                <Facebook className="icon" />
+                <Link target="_blank" href={`https://instagram.com/${instagram}`}>
+                  <Instagram className="icon" />
+                </Link>
+                <Link target="_blank" href={`https://instagram.com/${instagram}`}>
+                  <Facebook className="icon" />
+                </Link>
               </div>
             </li>
             <div className="links">

@@ -10,8 +10,8 @@ const fontLexend = Lexend({
 });
 
 export const metadata: Metadata = {
-  title: "Food",
-  description: "Criado por TecVit",
+  title: "Pedido Fácil",
+  description: "Seu novo jeito favorito de comprar em Araraquara — qualidade, confiança e praticidade",
 };
 
 export default function RootLayout({
@@ -22,9 +22,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={`${fontLexend.variable}`}>
-
         {children}
-
         <ToastContainer />
       </body>
     </html>
