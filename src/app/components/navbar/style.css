@@ -10,7 +10,7 @@
 }
 
 .container-navbar .content-navbar {
-  width: 95%;
+  width: 90%;
   max-width: var(--max-width);
   height: 85px;
   display: flex;
@@ -51,4 +51,91 @@
   flex-direction: row;
   align-items: center;
   gap: 20px;
+}
+
+/* Mobile */
+.btn-navbar {
+  display: none;
+}
+
+.container-navbar .content-navbar .links-mobile {
+  width: 90%;
+  max-width: 750px !important;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 100px;
+  gap: 0px;
+  backdrop-filter: blur(5px);
+  color: var(--tertiary);
+  background: var(--nine);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0px 2px 12px var(--seven);
+}
+
+.container-navbar .content-navbar .links-mobile a {
+  width: 100%;
+  height: auto;
+  padding: 15px 0px;
+  margin: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  transition: all .1se ease-in-out;
+} .container-navbar .content-navbar .links-mobile a:hover,
+.container-navbar .content-navbar .links-mobile a:focus {
+  background: var(--eight);
+}
+
+.container-navbar .content-navbar .links-mobile .btns-mobile {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin: 15px 0px 0px 0px;
+}
+
+.container-navbar .content-navbar .links-mobile .btns-mobile a {
+  width: 100%;
+  height: auto;
+  text-align: center;
+}
+
+/* Diminui a Navbar e Mostra o botão Mobile */
+@media (max-width: 985px) {
+  .container-navbar .content-navbar {
+    max-width: 750px !important;
+  }
+
+  .container-navbar .content-navbar img {
+    width: auto;
+    height: 50px;
+  }
+
+  .container-navbar .content-navbar .btns .btn-navbar {
+    display: flex;
+  }
+
+  /* Links */
+  .container-navbar .content-navbar .links {
+    display: none;
+  }
+
+}
+
+/* Remove os botões de login */
+@media (max-width: 670px) {
+  .container-navbar .content-navbar .btns a {
+    display: none !important;
+  }
+
+  .container-navbar .content-navbar .btns .btn-navbar {
+    display: flex;
+  }
 }

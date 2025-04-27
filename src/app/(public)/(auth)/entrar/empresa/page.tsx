@@ -60,6 +60,7 @@ const EntrarEmpresa = () => {
         setCookie('access_token', session.access_token);
         setCookie('refresh_token', session.refresh_token);
         setCookie('name', user.user_metadata.full_name);
+        setCookie('role', user.user_metadata.role);
         setCookie('email', user.email);
         setCookie('id', user.id);
         
@@ -89,7 +90,7 @@ const EntrarEmpresa = () => {
       <section className="content-auth">
         <div className="form">
           <div className="content">
-            <h1>Olá Empresa, Entre em sua conta</h1>
+            <h1>Olá, Empresa! Entre em sua conta</h1>
             <div style={{ margin: '0px 0px 15px 0px' }} className="tecvit-alert success">
               <BadgeCheck className='icon' />
               <div className="text">

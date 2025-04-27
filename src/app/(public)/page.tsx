@@ -6,19 +6,73 @@ import './style.css';
 import Image from "next/image";
 import Seta from '../../assets/images/seta.png';
 import Copao from '../../assets/images/copao.jpg';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Footer from "../components/footer";
+import Contact from "../components/contact";
 import StarRating from "../components/stars";
-
+import { setCookie } from "@/lib/cookies";
+import { supabase } from "@/lib/supabase/Config";
+import { notifyError } from "@/lib/toastify";
+import { parse } from "querystring";
 
 export default function Landing() {
+
+  // Sign-in with link
+  useEffect(() => {
+    const fetchData = async () => {
+      const hash = window.location.hash.substring(1);
+      const params = parse(hash);
+  
+      const access_token = Array.isArray(params["access_token"])
+        ? params["access_token"][0]
+        : params["access_token"];
+  
+      const refresh_token = Array.isArray(params["refresh_token"])
+        ? params["refresh_token"][0]
+        : params["refresh_token"];
+  
+      if (access_token && refresh_token) {
+        const response = await fetch(`/api/auth/jwt`, {
+          method: "POST",
+          headers: {
+            'authorization': `Bearer ${access_token}`,
+          },
+        });
+  
+        const data = await response.json();
+  
+        if (response.status === 200 && data) {
+          const { full_name, email, id, role } = data.data;
+  
+          setCookie('name', full_name || "");
+          setCookie('email', email || "");
+          setCookie('id', id || "");
+          setCookie('role', role);
+  
+          setCookie("access_token", access_token, 1 / 24);
+          setCookie("refresh_token", refresh_token, 30);
+    
+          supabase.auth.setSession({
+            access_token,
+            refresh_token,
+          });
+    
+          window.location.href = "/cliente/carrinho";
+        } else {
+          notifyError("Aviso", "Acesso Negado ou Expirado!");
+        }
+      }
+    };
+  
+    fetchData();
+  }, []);
 
   const productsList = [
     {
       id: 1,
       image: "https://images.tcdn.com.br/img/img_prod/1038791/copo_acai_personalizado_500_ml_c_50_un_1499_1_00b2227d68f8b47548cdb4d666ca6dcc.jpg",
       name: "Copão de Açai Tradicional - 700ml",
-      description: "Cobertura de chocolate",
+      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus magnam natus inventore nobis ducimus enim omnis fugit, suscipit asperiores animi quae autem libero vitae vel nesciunt, expedita pariatur perspiciatis nemo?",
       price: 10,
       store: {
         name: "Copão JB",
@@ -145,8 +199,8 @@ export default function Landing() {
         
         <section className="content-landing">
           <div className="text">
-            <h1>Encontre o que você precisa</h1>
-            <p>Forneçemos tudo o que você precisa, e todos os sabores possíveis e de melhor qualidade</p>
+            <h1 className="title">Encontre o que você precisa</h1>
+            <p>Forneçemos tudo o que você precisa, e todos os produtos possíveis e de melhor qualidade</p>
             <div className="search">
               <div style={{ borderRadius: inputSearch.length > 0 ? '10px 10px 0px 0px' : '10px' }} className="input">
                 <Search className="icon" />
@@ -233,7 +287,16 @@ export default function Landing() {
                     <div className="description">
                       <div className="text">
                         <h1>{product.name}</h1>
-                        <p>{product.description || "Produto sem descrição"}</p>
+                        <p>
+                          {product.description
+                            ? (() => {
+                              const words = String(product.description).split(" ");
+                              return words.length > 6
+                                ? words.slice(0, 6).join(" ") + "..."
+                                : words.join(" ");
+                            })()
+                          : "Produto sem descrição"}
+                        </p>
                       </div>
                       <div className="price">
                         <StarRating rating={product.rating || 5} />
@@ -250,6 +313,8 @@ export default function Landing() {
         </section>
 
       </main>
+
+      <Contact />
 
       <Footer />
     </>

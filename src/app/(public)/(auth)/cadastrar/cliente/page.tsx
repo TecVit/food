@@ -4,12 +4,10 @@ import Navbar from "@/app/components/navbar";
 import { setCookie } from "@/lib/cookies";
 import { notifyError, notifyInfo, notifySuccess } from "@/lib/toastify";
 import { Asterisk, Eye, EyeClosed } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import '../../auth.css';
 import Footer from "@/app/components/footer";
 import { FcGoogle } from "react-icons/fc";
-import { supabase } from "@/lib/supabase/Config";
-import { parse } from "querystring";
 import Link from "next/link";
 
 const CadastrarCliente = () => {
@@ -125,7 +123,7 @@ const CadastrarCliente = () => {
       <section className="content-auth">
         <div style={{ maxWidth: '650px', padding: '0px 30px' }} className="form">
           <div style={{ width: '100%' }} className="content">
-            <h1>Olá Cliente, Cadastre uma conta</h1>
+            <h1>Olá, Cliente! Cadastre uma conta</h1>
             <div className="inputs">
               <div className="input">
                 <label>

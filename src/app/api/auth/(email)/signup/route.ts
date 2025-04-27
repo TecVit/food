@@ -6,6 +6,7 @@ const SUBSCRIPTION_KEY = process.env.SUBSCRIPTION_KEY;
 export async function POST(req: NextRequest) {
   try {
     const { email, password, full_name, type } = await req.json();
+    // Type == Role | Client or Store
 
     if (!type || type !== 'store' && type !== 'client') {
       return NextResponse.json({ status: 400, error: `Valor do campo "Type" inválido` }, { status: 400 });
@@ -25,7 +26,10 @@ export async function POST(req: NextRequest) {
       email,
       password,
       options: {
-        data: { full_name },
+        data: { 
+          full_name,
+          role: type
+        },
       },
     });
 
@@ -46,7 +50,7 @@ export async function POST(req: NextRequest) {
 
     if (profileError) {
       console.error("Erro ao inserir perfil:", profileError);
-      return NextResponse.json({ error: "Erro ao criar perfil do usuário" }, { status: 500 });
+      return NextResponse.json({ error: `Erro ao criar perfil do usuário: ${profileError}` }, { status: 500 });
     }
 
     return NextResponse.json({ user: data.user }, { status: 200 });

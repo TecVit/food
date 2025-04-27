@@ -21,12 +21,13 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    const path = type === 'client' ? 'entrar/cliente' : type === 'store' ? 'entrar/empresa' : '';
+    // const path = type === 'client' ? 'entrar/cliente' : type === 'store' ? 'entrar/empresa' : '';
 
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: `${process.env.NEXT_PUBLIC_URL}/${path}`,
+        // redirectTo: `${process.env.NEXT_PUBLIC_URL}/${path}`,
+        redirectTo: `${process.env.NEXT_PUBLIC_URL}/`,
       },
     });
 

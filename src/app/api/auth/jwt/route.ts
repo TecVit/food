@@ -18,12 +18,18 @@ export async function POST(req: NextRequest) {
     if (!exp || Date.now() >= exp * 1000) {
       return NextResponse.json({ error: "Token expirado" }, { status: 401 });
     }
+
+    type UserMetadata = {
+      role?: string,
+      full_name?: string,
+      email?: string,
+    }
   
-    const { full_name, email } = user_metadata || {};
+    const { full_name, email, role  } = user_metadata as UserMetadata;
     const { provider } = app_metadata || {};
 
     if (provider === "google") {
-      // Role => client | store
+      // Only client has login with google
       const { error: profileError } = await supabase
       .from("client")
       .upsert(
@@ -34,13 +40,14 @@ export async function POST(req: NextRequest) {
       if (profileError) {
         console.error("Erro ao inserir perfil:", profileError);
         return NextResponse.json({ error: "Erro ao criar perfil do usuário" }, { status: 500 });
-      }    
+      }
     }
-
+    
     return NextResponse.json({ valid: true, data: {
       full_name,
       email,
-      id
+      id,
+      role,
     } }, { status: 200 });
   } catch (error) {
     console.log(error);

@@ -11,57 +11,8 @@ import Footer from "@/app/components/footer";
 import { FcGoogle } from "react-icons/fc";
 import { supabase } from "@/lib/supabase/Config";
 import { parse } from "querystring";
-import jwt, { type JwtPayload } from "jsonwebtoken";
 
 const EntrarCliente = () => {
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const hash = window.location.hash.substring(1);
-      const params = parse(hash);
-  
-      const access_token = Array.isArray(params["access_token"])
-        ? params["access_token"][0]
-        : params["access_token"];
-  
-      const refresh_token = Array.isArray(params["refresh_token"])
-        ? params["refresh_token"][0]
-        : params["refresh_token"];
-  
-      if (access_token && refresh_token) {
-        const response = await fetch(`/api/auth/jwt`, {
-          method: "POST",
-          headers: {
-            'authorization': `Bearer ${access_token}`,
-          },
-        });
-  
-        const data = await response.json();
-  
-        if (response.status === 200 && data) {
-          const { full_name, email, id } = data.data;
-  
-          setCookie('name', full_name || "");
-          setCookie('email', email || "");
-          setCookie('id', id || "");
-  
-          setCookie("access_token", access_token, 1 / 24);
-          setCookie("refresh_token", refresh_token, 30);
-    
-          supabase.auth.setSession({
-            access_token,
-            refresh_token,
-          });
-    
-          window.location.href = "/cliente/carrinho";
-        } else {
-          notifyError("Aviso", "Acesso Negado ou Expirado!");
-        }
-      }
-    };
-  
-    fetchData();
-  }, []);
 
   // Modais
   const [carregando, setCarregando] = useState(false);
@@ -107,25 +58,30 @@ const EntrarCliente = () => {
       if (data.error === "Email not confirmed") {
         notifyError("Aviso", 'Email não confirmado, por favor, verifique seu endereço eletrônico!');
         return;
+      } else if (data.error === "Invalid login credentials") {
+        notifyError("Aviso", 'Email ou senha inválidos!');
+        return;
       }
 
       if (response.status === 200) {
         const user = data.user;
-        const session = data.session.access_token;
+        const session = data.session;
         
         setCookie('access_token', session.access_token);
         setCookie('refresh_token', session.refresh_token);
         setCookie('name', user.user_metadata.full_name);
+        setCookie('role', user.user_metadata.role);
         setCookie('email', user.email);
         setCookie('id', user.id);
         
         notifySuccess("Aviso", `Bem-Vindo Cliente, ${user.user_metadata.full_name}!`);
         setTimeout(() => {
-          window.location.href = "/cliente";
+          window.location.href = "/cliente/carrinho";
         }, 3750);
       
       } else {
-        notifyError("Aviso", 'Email ou Senha inválidos!');
+        notifyError("Aviso", data.error);
+        return;
       }
 
       return false;
@@ -167,7 +123,7 @@ const EntrarCliente = () => {
       <section className="content-auth">
         <div className="form">
           <div className="content">
-            <h1>Olá Cliente, Entre em sua conta</h1>
+            <h1>Olá! Cliente! Entre em sua conta</h1>
             <div style={{ margin: '0px 0px 15px 0px' }} className="tecvit-alert success">
               <BadgeCheck className='icon' />
               <div className="text">

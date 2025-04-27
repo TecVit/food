@@ -1,0 +1,61 @@
+.container-contact {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--primary);
+  position: relative;
+}
+
+.container-contact .content-contact {
+  width: 90%;
+  max-width: var(--max-width);
+  height: auto;
+  padding: 85px 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2;
+}
+
+.container-contact .content-contact::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url(../../../assets/images/xadrez.png);
+  background-position: center;
+  background-size: 70%;
+  z-index: -1;
+}
+
+.container-contact .content-contact h1 {
+  font-size: 30px;
+  font-weight: 500;
+  color: var(--ten);
+}
+
+.container-contact .content-contact button {
+  min-width: 100px;
+}
+
+@media (max-width: 700px) {
+  .container-contact .content-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .container-contact .content-contact h1 {
+    font-size: 26px;
+  }
+
+  .container-contact .content-contact a {
+    font-size: 14px;
+  }
+
+}

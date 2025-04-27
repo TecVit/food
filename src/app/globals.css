@@ -86,6 +86,7 @@ a {
   transition: all .1s ease-in-out;
 } .btn-secondary:hover,
 .btn-secondary:focus {
+  background: var(--secondary) !important;
   box-shadow: 0px 5px 10px var(--secondary);
 }
 
@@ -103,6 +104,7 @@ a {
   transition: all .1s ease-in-out;
 } .btn-tertiary:hover,
 .btn-tertiary:focus {
+  background: var(--tertiary) !important;
   box-shadow: 0px 5px 10px var(--tertiary);
 }  .btn-tertiary:hover,
 .btn-tertiary:focus {
@@ -128,11 +130,38 @@ a {
   transition: all .1s ease-in-out;
 } .btn-quaternary:hover,
 .btn-quaternary:focus {
+  background: inherit !important;
   box-shadow: 0px 5px 10px var(--quaternary);
 } .btn-quaternary .icon {
   width: 25px;
   height: auto;
   margin: -10px 8px -10px 0px;
+}
+
+.btn-navbar {
+  width: auto;
+  height: auto;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: var(--ten);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all .1s ease-in-out;
+} .btn-navbar:hover,
+.btn-navbar:focus {
+  box-shadow: 0px 5px 10px rgba(255, 255, 255, 0.1);
+}
+
+.btn-navbar .icon {
+  width: 30px;
+  height: auto;
+  margin: 0px;
 }
 
 /* TecVit Alert */
